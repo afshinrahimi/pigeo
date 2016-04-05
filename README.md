@@ -27,3 +27,5 @@ Installation
 2. ``cd pigeo`` then ``chmod +x download_models.sh`` and then run ``./download_models.sh``.
 
 this downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
+
+3. install Flask by ``sudo pip install Flask`` or ``pip install -U --user flask`` if you are not a sudoer.
