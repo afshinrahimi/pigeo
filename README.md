@@ -36,7 +36,7 @@ Directory Structure
 
 The directory structure after installation and downloading the models should be:
 
-
+```
 .
 ├── download_models.sh
 ├── models
@@ -77,4 +77,4 @@ The directory structure after installation and downloading the models should be:
 │   ├── index.html
 │   └── index-simple.html
 └── twitterapi.py
-
+```
