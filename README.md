@@ -16,8 +16,8 @@ The design principles are as follows:
 5. It supports informal text.
 6. It's performance is evaluated over a standard Twitter geolocation dataset.
 
-Installation
-------------
+Quick Start
+-----------
 
 ``pigeo``'s installation is straightforward:
 
@@ -29,6 +29,8 @@ Installation
 This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
 
 3. install Flask by ``sudo pip install flask-restful`` or ``pip install -U --user flask`` if you are not a sudoer.
+
+4. ``pigeo`` is ready to use. Go to usage section.
 
 
 Directory Structure
@@ -78,3 +80,8 @@ The directory structure after installation and downloading the models should be:
 │   └── index-simple.html
 └── twitterapi.py
 ```
+
+Usage
+-----
+
+
