@@ -111,3 +111,44 @@ optional arguments:
 ```
 
 
+Shell Mode
+----------
+
+This mode is well suited for initial testing of ``pigeo``.
+Simply type ``python pigeo.py`` or ``python pigeo.py --mode shell`` to open the shell mode.
+You can type a string or a single Twitter user to be geolocated.
+
+``text to geolocate: yall``
+and the result is:
+
+```
+{'city': u'Atlanta', 'state': u'Georgia', 'lat': 33.749000000000002, 'country': u'United States of America', 'lon': -84.387979999999999, 'label_distribution': {180: 0.063345477875493147}, 'top50': u'atlanta, newnan, atl, _madeinchyna, auc, spelman, emory, nisha_pooh_, mcdonough, lenox, redan, glambarsalon, morehouse, stockbridge, llh, riverdale, scoutmob, llf, marta, ladycaliibaybee, buckhead, georgia, ga, culc, decatur, cl_atlanta, coweta, peachtree, piedmont, colemankjohnson, cau, obsessions, followmeh, \uc9c0\uc6b0\uac1c, frfr, \uba38\ub9ac\uc18d\uc5d0, stonecrest, creekside, welcometoatlanta, lithonia, octane, duress, midtown, jortstorture, falcons, wpatl, a3c, criminalrecords, fairburn, frankski'}
+```
+The result is a json string which contains city, state, country and coordinates of the predicted location. It also contains the predicted class and its confidence.
+Note that the LR-WORLD model has 930 classes/regions. The top 50 most important features of the predicted class are also returned.
+
+Web Mode
+--------
+
+The web mode is powered by Flask which is a lightweight Python web framework.
+To start the webservice simply run
+
+``python pigeo.py --mode web --host 127.0.0.1 --port 5000``
+
+If you want the web service to be available on the valid IP address run:
+
+``python pigeo.py --mode web --host 0.0.0.0 --port 5000``
+
+Use ``http://127.0.0.1:5000`` or ``http://valid-ip-address:5000`` in the browser to use the service.
+The service is able to geolocate a piece of text or a single Twitter user (e.g. @potus).
+
+Library Mode
+------------
+
+
+
+
+
+
+
+
