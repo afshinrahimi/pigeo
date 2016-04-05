@@ -24,8 +24,7 @@ Installation
     
     git clone http://github.com/afshinrahimi/pigeo.git
 
-2. 
-
+2. sdfsd
 
     cd pigeo
     
