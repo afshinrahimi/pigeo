@@ -145,10 +145,44 @@ The service is able to geolocate a piece of text or a single Twitter user (e.g. 
 Library Mode
 ------------
 
+pigeo is well suited to be used in other python programs.
+In the library mode it is possible to geolocate a single piece of text
+and also a list of text documents. Simple use case:
+
+```
+import pigeo
+# loads the world model (default)
+pigeo.load_model()
+# geolocate a sentence
+pigeo.geo("gamble casino city")
+# geolocate a Twitter user
+pigeo.geo('@POTUS')
+# geolocate a list of texts
+pigeo.geo(['city centre', 'city center'])
+```
+
+Note that it is not efficient to call pigeo.geo multiple times
+and the suggested way for geolocation of multiple documents is
+passing them as a list to pigeo.geo.
 
 
+Training Mode
+-------------
 
+To train a new geolocation model one needs
+a list of text and a list of corresponding
+coordinates. pigeo then is able to train a
+new model and save it as follows:
 
+```
+import pigeo
+# train the model and save it in 'toy_model'
+pigeo.train_model(['text1', 'text2'], 
+[(lat1, lon1), (lat2, lon2)], num_classes=2, 
+model_dir='toy_model')
+# the new model can be loaded and be used
+pigeo.load_model(model_dir='toy_modle')
+```
 
 
 
