@@ -26,6 +26,55 @@ Installation
 
 2. ``cd pigeo`` then ``chmod +x download_models.sh`` and then run ``./download_models.sh``.
 
-this downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
+This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
 
-3. install Flask by ``sudo pip install Flask`` or ``pip install -U --user flask`` if you are not a sudoer.
+3. install Flask by ``sudo pip install flask-restful`` or ``pip install -U --user flask`` if you are not a sudoer.
+
+
+Directory Structure
+-------------------
+
+The directory structure after installation and downloading the models should be:
+
+
+.
+├── download_models.sh
+├── models
+│   ├── lpworld
+│   │   └── userhash_coordinate.pkl.gz
+│   └── lrworld
+│       ├── clf.pkl.gz
+│       ├── coordinate_address.pkl.gz
+│       ├── label_coordinate.pkl.gz
+│       └── vectorizer.pkl.gz
+├── params.py
+├── pigeo.py
+├── README.md
+├── static
+│   └── styles
+│       ├── bootstrap-3.3.6-dist
+│       │   ├── css
+│       │   │   ├── bootstrap.css
+│       │   │   ├── bootstrap.css.map
+│       │   │   ├── bootstrap.min.css
+│       │   │   ├── bootstrap.min.css.map
+│       │   │   ├── bootstrap-theme.css
+│       │   │   ├── bootstrap-theme.css.map
+│       │   │   ├── bootstrap-theme.min.css
+│       │   │   └── bootstrap-theme.min.css.map
+│       │   ├── fonts
+│       │   │   ├── glyphicons-halflings-regular.eot
+│       │   │   ├── glyphicons-halflings-regular.svg
+│       │   │   ├── glyphicons-halflings-regular.ttf
+│       │   │   ├── glyphicons-halflings-regular.woff
+│       │   │   └── glyphicons-halflings-regular.woff2
+│       │   └── js
+│       │       ├── bootstrap.js
+│       │       ├── bootstrap.min.js
+│       │       └── npm.js
+│       └── main.css
+├── templates
+│   ├── index.html
+│   └── index-simple.html
+└── twitterapi.py
+
