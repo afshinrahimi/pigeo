@@ -28,7 +28,11 @@ Quick Start
 
 This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
 
-3. install Flask by ``sudo pip install flask-restful`` or ``pip install -U --user flask`` if you are not a sudoer.
+3. Requirements:
+
+	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
+	
+	3.2 ``sudo pip install scikit-learn`` or 
 
 4. ``pigeo`` is ready to use. Go to usage section.
 
