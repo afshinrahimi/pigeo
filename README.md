@@ -166,7 +166,9 @@ pigeo.geo(['city centre', 'city center'])
 
 Note that it is not efficient to call pigeo.geo multiple times
 and the suggested way for geolocation of multiple documents is
-passing them as a list to pigeo.geo.
+passing them as a list to pigeo.geo. It is possible to return
+the label distribution over all classes rather than only the predicted
+class by calling ``pigeo.get('a text', True)``.
 
 
 Training Mode
