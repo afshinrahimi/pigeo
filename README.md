@@ -204,6 +204,19 @@ pigeo.load_lpworld()
 pigeo.geo_lp('@potus')
 ```
 
+Version
+-------
+Python version 2.7
+
+scikit-learn version 0.17
+
+pickle Revision: 72223
+
+Numpy version 1.10.4
+
+Note that the models might not be easily loadable by
+other pickle/scikit-learn versions.
+
 Contact
 -------
 Afshin Rahimi <afshinrahimi@gmail.com>
