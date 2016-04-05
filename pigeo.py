@@ -396,6 +396,7 @@ def load_model(model_dir='./models/lrworld'):
 	"""
 	if not os.path.exists(model_dir):
 		logging.error('The input directory with --model/-m option does not exist: ' + model_dir)
+		logging.error('If it is the first time you are using pigeo, please run download_models.sh or manually download the models from https://drive.google.com/file/d/0B9ZfPKPvp-JibDlLNTJnMnlQZ3c/view?usp=sharing or https://www.dropbox.com/s/gw8z0r5nq5ccok0/models.tar?dl=0')
 		sys.exit(-1)
 
 	logging.info('loading the saved model from pickle files in ' + model_dir)
@@ -427,11 +428,11 @@ def start_commandline(model_dir):
 		print result
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--model', '-d', default="./models/lrworld")
-	parser.add_argument('--dump_dir', '-o', default="./models/test_model")
-	parser.add_argument('--host', default='127.0.0.1')
-	parser.add_argument('--port', '-p', type=int, default=5000)
-	parser.add_argument('--mode', '-m', default='shell')
+	parser.add_argument('--model', '-d', default="./models/lrworld", help="text-based classification model directory to be used. default(./models/lrworld)")
+	parser.add_argument('--dump_dir', '-o', default="./models/test_model", help="directory to which a newly trained model is saved. default(./models/test_model)")
+	parser.add_argument('--host', default='127.0.0.1', help='host name/IP address where Flask web server in web mode will be running on. Set to 0.0.0.0 to make it externally available. default (127.0.0.1)')
+	parser.add_argument('--port', '-p', type=int, default=5000, help='port number where Flask web server will bind to in web mode. default (5000).')
+	parser.add_argument('--mode', '-m', default='shell', help='mode (web, shell) in which pigeo will be used. default (shell).')
 	args = parser.parse_args()
 	
 	if args.mode == 'shell':
