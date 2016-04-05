@@ -26,6 +26,9 @@ Installation
 
 2. 
 
+
     cd pigeo
+    
     chmod +x download_models.sh
+    
     ./download_models.sh #this downloads the pretrained models and extracts them in models. alternatively you can do it manually.
