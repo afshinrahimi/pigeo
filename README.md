@@ -32,7 +32,7 @@ This downloads the pre-trained models and extracts them in models. alternatively
 
 	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
 	
-	3.2 ``sudo pip install scikit-learn`` or 
+	3.2 ``sudo pip install scikit-learn`` 
 
 4. ``pigeo`` is ready to use. Go to usage section.
 
@@ -87,5 +87,27 @@ The directory structure after installation and downloading the models should be:
 
 Usage
 -----
+
+
+```
+usage: pigeo.py [-h] [--model MODEL] [--dump_dir DUMP_DIR] [--host HOST]
+                [--port PORT] [--mode MODE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL, -d MODEL
+                        text-based classification model directory to be used.
+                        default(./models/lrworld)
+  --dump_dir DUMP_DIR, -o DUMP_DIR
+                        directory to which a newly trained model is saved.
+                        default(./models/test_model)
+  --host HOST           host name/IP address where Flask web server in web
+                        mode will be running on. Set to 0.0.0.0 to make it
+                        externally available. default (127.0.0.1)
+  --port PORT, -p PORT  port number where Flask web server will bind to in web
+                        mode. default (5000).
+  --mode MODE, -m MODE  mode (web, shell) in which pigeo will be used. default
+                        (shell).
+```
 
 
