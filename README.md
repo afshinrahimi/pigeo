@@ -20,14 +20,10 @@ Installation
 ------------
 
 ``pigeo``'s installation is straightforward:
-1. download the zip file from github or run:
-    
-    git clone http://github.com/afshinrahimi/pigeo.git
 
-2. sdfsd
 
-    cd pigeo
-    
-    chmod +x download_models.sh
-    
-    ./download_models.sh #this downloads the pretrained models and extracts them in models. alternatively you can do it manually.
+1. download the zip file from github or run: ``git clone http://github.com/afshinrahimi/pigeo.git``
+
+2. ``cd pigeo`` then ``chmod +x download_models.sh`` and then run ``./download_models.sh``.
+
+this downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
