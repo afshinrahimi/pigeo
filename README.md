@@ -33,6 +33,9 @@ This downloads the pre-trained models and extracts them in models. alternatively
 	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
 	
 	3.2 ``sudo pip install scikit-learn`` 
+	
+	3.3 for geolocation of Twitter users, Internet connection and tweepy library are needed which can be installed by 
+	``sudo pip install tweepy``.
 
 4. ``pigeo`` is ready to use. Go to usage section.
 
@@ -184,5 +187,18 @@ model_dir='toy_model')
 pigeo.load_model(model_dir='toy_modle')
 ```
 
+LP Network-based Regression Mode
+--------------------------------
 
+pigeo has a trained network-based regression model that
+can geolocate only Twitter user which requires both an
+Internet connection and the tweepy library installed.
+
+```
+import pigeo
+# load lpworld
+pigeo.load_lpworld()
+# geolocate a Twitter user (Internet neeeded).
+pigeo.geo_lp('@potus')
+```
 
