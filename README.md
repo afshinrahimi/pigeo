@@ -7,6 +7,8 @@ Introduction
 
 ``pigeo`` is a document or Twitter user geolocation tool. Given a piece of text or a Twitter user, it can predict their locations based on pre-trained models.
 
+A screencast of how ``pigeo`` works is available on Youtube: https://www.youtube.com/watch?v=QiV_ow7k2J4 
+
 The design principles are as follows:
 
 1. Lightweight and fast
@@ -15,6 +17,7 @@ The design principles are as follows:
 4. It can be used in shell mode, web mode powered by Python Flask and as a library.
 5. It supports informal text.
 6. It's performance is evaluated over a standard Twitter geolocation dataset.
+
 
 Quick Start
 -----------
