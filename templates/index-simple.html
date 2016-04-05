@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<style>
+.body {
+  font-family: 'Nunito', sans-serif;
+  color: #384047;
+}
+.button {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+}
+
+</style>
+  <title>TEST</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX1L4zo7ald2sBLgnz0OPZDrW9IuGLX_8"></script>
+  <script>
+	lat = -37.7964;
+	lon = 144.9612;
+	myCenter=new google.maps.LatLng(lat, lon);
+
+	function initialize()
+	{
+	var mapProp = {
+	  center:myCenter,
+	  zoom:5,
+	  mapTypeId:google.maps.MapTypeId.ROADMAP
+	  };
+
+	map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+	marker=new google.maps.Marker({
+	  position:myCenter,
+	  });
+
+	marker.setMap(map);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+  </script> 
+ 
+</head>
+<body class="body">
+<br><br>
+<div style="width: 500px; margin: 0px auto;">
+<label name="copypastetext" id="copypastelbl">Try our geolocatioin system by writing/copying a piece of text or writing a single Twitter user (e.g. @afshinray)</label> <br><br>
+<textarea name="text" id="text1" style="width:500px;height:150px;margin: 0px auto;"> e.g., people come to this city to gamble. There are lots of casinos here! </textarea> <br><br>
+<form action="/geo" id="searchForm">
+	<div style="width: 150px; margin: 0px auto;">
+		<input type="submit" style="width:150px;height:50px;margin: 0px auto;" class="button" value="Geolocate">
+	</div>
+</form>
+<br>
+<p id="loc" style="width:600px;height:50px;margin: 0px auto;"></p> 
+
+
+<div id="googleMap" style="width:500px;height:380px;margin: 0px auto;"></div> 
+<br>
+<label name="top50" id="top50"></label>
+</div>
+<script>
+// Attach a submit handler to the form
+$( "#searchForm" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    //term = $form.find( "input[name='text']" ).val(),
+    url = $form.attr( "action" );
+ var content = document.getElementById('text1').value;
+ $.ajax({
+  url:url,
+  type:"GET",
+  data:{text:content},
+  dataType:"json",
+  success: function(result){
+	document.getElementById("loc").innerHTML = result.city + ', ' + result.state + ', ' + result.country + "\n approx. latitude/longitude:" + result.lat + ',' + result.lon;
+	lat = result.lat;
+	lon = result.lon;
+	myCenter=new google.maps.LatLng(lat, lon);
+	marker.setMap(null);
+	marker=new google.maps.Marker({
+	  position:myCenter,
+	  });
+	marker.setMap(map);
+	map.panTo(marker.getPosition());
+	document.getElementById('top50').innerHTML = "Top 50 features: \n" + result.top50;
+  },
+  error: function(result){console.log(result);},
+  //complete: function(result){console.log(result);}
+})
+
+});
+</script>
+</body>
+</html>

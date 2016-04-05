@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>pigeo, an easy to use accurate geolocation library</title>
+    <link href="{{ url_for('static', filename='styles/bootstrap-3.3.6-dist/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='styles/main.css')}}" rel="stylesheet" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX1L4zo7ald2sBLgnz0OPZDrW9IuGLX_8"></script>
+    <script>
+        lat = 39;
+        lon = 22;
+        myCenter = new google.maps.LatLng(lat, lon);
+
+        function initialize() {
+            var mapProp = {
+                center: myCenter,
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            marker = new google.maps.Marker({
+                position: myCenter,
+            });
+
+            //marker.setMap(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+    <div id="googleMap"></div>
+    <div class="mainContainer">
+
+        <div class="bg-primary padding30">pigeo <span class="badge blueColor pull-right">v0.1</span></div>
+        <div class="copypastetextarea">
+            <div class="alert alert-info marginButtonZero" role="heading">
+                Try our geolocation system by typing or copy-pasting a text here
+            </div>
+            <textarea name="text" id="text1" class="form-control" rows="3" placeholder="e.g., people come to this city to gamble. There are lots of casinos here!"></textarea>
+            <form action="/geo" id="searchForm">
+                <button type="submit" class="btn btn-success topMargin pull-right">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    Geolocate
+                </button>
+            </form>
+            <div class="clearFloat"></div>
+        </div>
+
+        <div class="locationInfo" name="loc" id="loc"></div>
+        <div class="top50Container" name="top50" id="top50"></div>
+    </div>
+
+    <script>
+        // Attach a submit handler to the form
+        $("#searchForm").submit(function (event) {
+
+            // Stop form from submitting normally
+            event.preventDefault();
+
+            // Get some values from elements on the page:
+            var $form = $(this),
+              //term = $form.find( "input[name='text']" ).val(),
+              url = $form.attr("action");
+            var content = document.getElementById('text1').value;
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: { text: content },
+                dataType: "json",
+                success: function (result) {
+                    document.getElementById("loc").innerHTML = result.city + ', ' + result.state + ', ' + result.country + "\n approx. latitude/longitude:" + result.lat + ',' + result.lon;
+                    lat = result.lat;
+                    lon = result.lon;
+                    myCenter = new google.maps.LatLng(lat, lon);
+                    marker.setMap(null);
+                    marker = new google.maps.Marker({
+                        position: myCenter,
+                    });
+                    marker.setMap(map);
+                    map.panTo(marker.getPosition());
+		    map.setZoom(4);
+                    document.getElementById('top50').innerHTML = "Top 50 features: \n" + result.top50;
+                },
+                error: function (result) { console.log(result); },
+                //complete: function(result){console.log(result);}
+            })
+
+        });
+    </script>
+</body>
+</html>
