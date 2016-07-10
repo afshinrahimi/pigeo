@@ -121,6 +121,8 @@ def geo(text, return_lbl_dist=False):
 	Returns:
 		a dictionary containing the predicted geolocation information about text.
 	"""
+	if not text:
+		return
 	#if text is a list of strings
 	if isinstance(text, list) or isinstance(text, tuple):
 		return geo_iterable(text, return_lbl_dist)
@@ -206,8 +208,12 @@ def geo_twitter(twitter_screen_name, return_lbl_dist=False):
 		a dictionary including information about the predicted location of the user given the content of their tweets.
 	"""
 	from twitterapi import download_user_tweets
+	timeline = []
 	timeline = download_user_tweets(twitter_screen_name, count=100)
-	text = ' '.join([t.text for t in timeline])
+	if timeline:
+		text = ' '.join([t.text for t in timeline])
+	else:
+		text = ' '
 	return geo(text, return_lbl_dist)
 	
 
