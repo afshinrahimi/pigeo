@@ -48,7 +48,7 @@
             </form>
             <div class="clearFloat"></div>
         </div>
-
+		<div id="someHiddenDiv" style="display: none;background-color: DarkOrange;">Loading...</div>
         <div class="locationInfo" name="loc" id="loc"></div>
         <div class="top50Container" name="top50" id="top50"></div>
     </div>
@@ -59,6 +59,7 @@
 
             // Stop form from submitting normally
             event.preventDefault();
+            $('#someHiddenDiv').show();
 
             // Get some values from elements on the page:
             var $form = $(this),
@@ -71,6 +72,7 @@
                 data: { text: content },
                 dataType: "json",
                 success: function (result) {
+                	$('#someHiddenDiv').hide();
                     document.getElementById("loc").innerHTML = result.city + ', ' + result.state + ', ' + result.country + "\n approx. latitude/longitude:" + result.lat + ',' + result.lon;
                     lat = result.lat;
                     lon = result.lon;
