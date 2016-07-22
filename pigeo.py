@@ -37,14 +37,31 @@ def get_coordinates(label):
 	lat, lon = params.label_coordinate[label]
 	return lat, lon
 
-def get_topk_features(label):
+def get_label(lat, lon):
+	""" given a lat, lon (float) find the class label of the model closest to the coordinate.
+	
+	Args:
+		lat (float): latitude of the location
+		lon (float): longitude of the location
+	Returns:
+		label (int) the closest class id (region) to the given coordinates.
+	"""
+	from haversine import haversine
+	#compute all the distances from the given point to the median point of every class
+	label_distances = {label:haversine((lat, lon), coordinate) for label, coordinate in params.label_coordinate.iteritems()}
+	#choose the label with minimum distance
+	label = min(label_distances, key=label_distances.get)
+	return label
+		
+
+def get_topk_features(label, topk=50):
 	"""
 	given a label (str) return the top k important features as a list
 	"""
-	top50_feature_indices = numpy.argsort(params.clf.coef_[label].toarray())[0,-50:].tolist()[::-1]
-	top50_features = [params.vectorizer.features[i] for i in top50_feature_indices]
-	top50_features = [f for f in top50_features if 'user_' not in f]
-	return top50_features
+	topk_feature_indices = numpy.argsort(params.clf.coef_[label].toarray())[0,-topk:].tolist()[::-1]
+	topk_features = [params.vectorizer.features[i] for i in topk_feature_indices]
+	topk_features = [f for f in topk_features if 'user_' not in f]
+	return topk_features
 
 def get_location_info(label):
 	"""
@@ -100,10 +117,33 @@ def geo_web():
 	text = request.args['text']
 	if isinstance(text, list) or isinstance(text, tuple) or len(text) == 0:
 		return
-	result = geo(text, return_lbl_dist=False)
+	result = None
+	try:
+		result = geo(text, return_lbl_dist=False)
+	except:
+		return
 	return jsonify(**result)
 	
-
+@app.route('/features', methods=['GET', 'POST'])
+def geo_features():
+	'''
+	RESTful API
+	given a piece of text, vectorize it, classify it into one of the regions using clf (a pre-trained classifier) and return a json which has info about the predicted location(s).
+	'''
+	lat = request.args['lat']
+	lon = request.args['lon']
+	features = []
+	if lat and lon:
+		label = get_label(float(lat), float(lon))
+		features = get_topk_features(label, topk=50)
+		location_info = get_location_info(label)
+		#should we set the marker on the cluster or the clicked coordinates?
+		#location_info['lat'] = lat
+		#location_info['lon'] = lon
+	features = ', '.join(features)
+	result = {'topk': features}
+	result.update(location_info)
+	return jsonify(**result)
 
 
 def geo(text, return_lbl_dist=False):

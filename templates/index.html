@@ -23,11 +23,51 @@
             marker = new google.maps.Marker({
                 position: myCenter,
             });
+            
 
             //marker.setMap(map);
+            
+            google.maps.event.addListener(map,'click',function(event) {
+				var latitude = event.latLng.lat(); 
+				var longitude = event.latLng.lng();
+				//window.open('/features?lat=' + latitude + '&lon=' + longitude);
+				//$('#top50Container').load('/features?lat=' + latitude + '&lon=' + longitude);
+	            // Stop form from submitting normally
+            	//event.preventDefault();
+           		$('#someHiddenDiv').show();
+           		url = '/features'
+           		$.ajax({
+	                url: url,
+	                type: "GET",
+	                data: { lat: latitude, lon: longitude },
+	                dataType: "json",
+	                success: function (result) {
+	                	$('#someHiddenDiv').hide();
+	                	document.getElementById("loc").innerHTML = result.city + ', ' + result.state + ', ' + result.country + "\n approx. latitude/longitude:" + result.lat + ',' + result.lon;
+	                    myCenter = new google.maps.LatLng(latitude, longitude);
+	                    marker.setMap(null);
+	                    marker = new google.maps.Marker({
+	                        position: myCenter,
+	                    });
+	                    marker.setMap(map);
+	                    map.panTo(marker.getPosition());
+			   			 map.setZoom(4);
+	                    document.getElementById('top50').innerHTML = "Top 50 features: \n" + result.topk;
+	                },
+	                error: function (result) { console.log(result); },
+	                //complete: function(result){console.log(result);}
+            	})
+	            
+	           
+			})
         }
-
+		
+		
+			
+		
+		
         google.maps.event.addDomListener(window, 'load', initialize);
+      
     </script>
 </head>
 <body>

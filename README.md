@@ -39,6 +39,8 @@ This downloads the pre-trained models and extracts them in models. alternatively
 	
 	3.3 for geolocation of Twitter users, Internet connection and tweepy library are needed which can be installed by 
 	``sudo pip install tweepy``.
+	
+	3.4 ``sudo pip install haversine`` which is a library that computes the distance between two coordinates (lat, lon) in km.
 
 4. ``pigeo`` is ready to use. Go to usage section.
 

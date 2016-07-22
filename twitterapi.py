@@ -23,6 +23,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
   
 def download_user_tweets(user_screen_name, count=100):
     logging.debug('downloading Twitter timeline of user ' + user_screen_name)
+    timeline = []
     try:
         timeline = api.user_timeline(user_screen_name, count=count)
     except:
