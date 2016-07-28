@@ -135,7 +135,7 @@ def geo_features():
 	features = []
 	if lat and lon:
 		label = get_label(float(lat), float(lon))
-		features = get_topk_features(label, topk=50)
+		features = get_topk_features(label, topk=100)
 		location_info = get_location_info(label)
 		#should we set the marker on the cluster or the clicked coordinates?
 		#location_info['lat'] = lat
