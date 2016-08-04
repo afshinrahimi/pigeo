@@ -18,6 +18,10 @@ The design principles are as follows:
 5. It supports informal text.
 6. It's performance is evaluated over a standard Twitter geolocation dataset.
 
+I try to keep the web-based app. Online here at http://bit.do/pigeo if it wasn't Online and you needed it
+for testing the system you can contact me or easily bring up the server on your own machine using the instructions
+below.
+
 
 Quick Start
 -----------
