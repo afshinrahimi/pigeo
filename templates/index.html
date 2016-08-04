@@ -23,6 +23,12 @@
             marker = new google.maps.Marker({
                 position: myCenter,
             });
+            marker2 = new google.maps.Marker({
+                position: myCenter,
+            });
+            marker3 = new google.maps.Marker({
+                position: myCenter,
+            });
             
 
             //marker.setMap(map);
@@ -118,11 +124,18 @@
                     lon = result.lon;
                     myCenter = new google.maps.LatLng(lat, lon);
                     marker.setMap(null);
+                    marker2.setMap(null);
+                    marker3.setMap(null);
                     marker = new google.maps.Marker({
-                        position: myCenter,
+                        position: myCenter, label: '1'
                     });
                     marker.setMap(map);
+                    marker2 = new google.maps.Marker({position: new google.maps.LatLng(result.lat1, result.lon1),label:'2'});
+                    marker2.setMap(map)
+                    marker3 = new google.maps.Marker({position: new google.maps.LatLng(result.lat2, result.lon2),label:'3'});
+                    marker3.setMap(map)
                     map.panTo(marker.getPosition());
+                    
 		    map.setZoom(4);
                     document.getElementById('top50').innerHTML = "Top 50 features: \n" + result.top50;
                 },

@@ -119,7 +119,7 @@ def geo_web():
 		return
 	result = None
 	try:
-		result = geo(text, return_lbl_dist=False)
+		result = geo(text, return_lbl_dist=False, topk=3)
 	except:
 		return
 	return jsonify(**result)
@@ -146,7 +146,7 @@ def geo_features():
 	return jsonify(**result)
 
 
-def geo(text, return_lbl_dist=False):
+def geo(text, return_lbl_dist=False, topk=1):
 	"""
 	given a piece of text (str/unicode), vectorize it, classify it into one of the regions using 
 	clf (a pre-trained classifier) and return a json which has info about the predicted location(s).
@@ -158,6 +158,7 @@ def geo(text, return_lbl_dist=False):
 	Args:
 		text (str/unicode): a string which should be geolocated. It can be a piece of text or one single Twitter screen name e.g. @user.
 		return_lbl_dist: if True returns the probability distribution over all the classes.
+		topk (int): default(1), if higher than 1, return the top K locations ordered by classifier's confidence.
 	Returns:
 		a dictionary containing the predicted geolocation information about text.
 	"""
@@ -178,10 +179,21 @@ def geo(text, return_lbl_dist=False):
 	if return_lbl_dist:
 		label_distribution = coo_matrix(label_distribution)
 		label_distribution_dict = {}
-		for i, lbl, prob in zip(label_distribution.row, label_distribution.col, label_distribution.data):
-			label_distribution_dict[lbl] = prob
-		label_distribution = label_distribution.toarray()
-	
+		for lbl in range(0, label_distribution.shape[1]):
+			label_distribution_dict[lbl] = label_distribution[0, lbl]
+	elif topk>1 and topk<=label_distribution.shape[1]:
+		topk_labels = numpy.argsort(label_distribution)[0][::-1][:topk].tolist()
+		topk_probs = [label_distribution[0, i] for i in topk_labels]
+		topk_label_dist = dict(zip(topk_labels, topk_probs))
+		topk_locationinfo = {}
+		for i, lbl in enumerate(topk_labels):
+			location_info = get_location_info(lbl)
+			topk_locationinfo['lat' + str(i)] = location_info['lat']
+			topk_locationinfo['lon' + str(i)] = location_info['lon']
+			topk_locationinfo['city' + str(i)] = location_info['city']
+			topk_locationinfo['state' + str(i)] = location_info['state']
+			topk_locationinfo['country' + str(i)] = location_info['country']
+			
 	pred = numpy.argmax(label_distribution)
 	confidence = label_distribution[0, pred]
 
@@ -189,6 +201,9 @@ def geo(text, return_lbl_dist=False):
 	location_info = get_location_info(pred)
 	if return_lbl_dist:
 		result = {'top50':top50_features, 'label_distribution':label_distribution_dict}
+	elif topk>1 and topk<=label_distribution.shape[1]:
+		result = {'top50':top50_features, 'label_distribution':topk_label_dist}
+		result.update(topk_locationinfo)
 	else:
 		result = {'top50':top50_features, 'label_distribution':{pred:confidence}}
 	result.update(location_info)
@@ -220,7 +235,7 @@ def geo_iterable(texts, return_lbl_dist=False):
 		if return_lbl_dist:
 			label_distribution = coo_matrix(label_distribution)
 			label_distribution_dict = {}
-			for i, lbl, prob in zip(label_distribution.row, label_distribution.col, label_distribution.data):
+			for j, lbl, prob in zip(label_distribution.row, label_distribution.col, label_distribution.data):
 				label_distribution_dict[lbl] = prob
 			label_distribution = label_distribution.toarray()
 		
