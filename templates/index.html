@@ -51,9 +51,7 @@
 	                	$('#someHiddenDiv').hide();
 	                	document.getElementById("loc").innerHTML = result.city + ', ' + result.state + ', ' + result.country + "\n approx. latitude/longitude:" + result.lat + ',' + result.lon;
 	                    myCenter = new google.maps.LatLng(latitude, longitude);
-	                    marker.setMap(null);
-	                    marker2.setMap(null);
-	                    marker3.setMap(null);
+						killMarkers();
 	                    marker = new google.maps.Marker({
 	                        position: myCenter,
 	                    });
@@ -70,7 +68,11 @@
 			})
         }
 		
-		
+		function killMarkers(){
+			marker.setMap(null);
+	    	marker2.setMap(null);
+			marker3.setMap(null);
+		}
 			
 		
 		
@@ -125,9 +127,7 @@
                     lat = result.lat;
                     lon = result.lon;
                     myCenter = new google.maps.LatLng(lat, lon);
-                    marker.setMap(null);
-                    marker2.setMap(null);
-                    marker3.setMap(null);
+					killMarkers();
                     marker = new google.maps.Marker({
                         position: myCenter, label: '1'
                     });
