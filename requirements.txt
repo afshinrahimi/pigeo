@@ -17,4 +17,4 @@ scipy==0.18.0
 six==1.10.0
 tweepy==3.5.0
 Werkzeug==0.11.10
-pkg-resources==0.0.0
+
