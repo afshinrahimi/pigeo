@@ -45,6 +45,11 @@ This downloads the pre-trained models and extracts them in models. alternatively
 	``sudo pip install tweepy``.
 	
 	3.4 ``sudo pip install haversine`` which is a library that computes the distance between two coordinates (lat, lon) in km.
+	
+	3.5 ``sudo pip install numpy``
+	
+	3.6 ``sudo pip install scipy``
+	
 
 4. ``pigeo`` is ready to use. Go to usage section.
 
