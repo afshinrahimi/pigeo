@@ -52,6 +52,7 @@ This downloads the pre-trained models and extracts them in models. alternatively
 	
 	3.6 ``sudo pip install scipy``
 	
+	Note: if you don't have root permission and can not run with sudo you can use pip with --user argument.
 
 4. ``pigeo`` is ready to use. Go to usage section.
 
