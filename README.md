@@ -37,7 +37,7 @@ This downloads the pre-trained models and extracts them in models. alternatively
 
 3. Requirements:
 	
-	3.0 ``sudo pip -r requirements.txt`` or install the individual packages from below.
+	3.0 ``sudo pip -r requirements.txt`` and go to 4 or start from 3.1 and install the individual packages one by one.
 
 	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
 	
