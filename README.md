@@ -33,28 +33,19 @@ Quick Start
 
 2. ``cd pigeo`` then ``chmod +x download_models.sh`` and then run ``./download_models.sh``.
 
-   This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
+   This downloads the pre-trained models and extracts them in models directory. alternatively 
+   (e.g. if you are using Windows) you can download the models directory from https://www.dropbox.com/s/gw8z0r5nq5ccok0/models.tar?dl=0 and extract it with an archive program.
 
 3. Requirements:
 	
-	3.0 ``sudo pip install -r requirements.txt`` and go to 4 or start from 3.1 and install the individual packages one by one.
-
-	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
-	
-	3.2 ``sudo pip install scikit-learn`` 
-	
-	3.3 for geolocation of Twitter users, Internet connection and tweepy library are needed which can be installed by 
-	``sudo pip install tweepy``.
-	
-	3.4 ``sudo pip install haversine`` which is a library that computes the distance between two coordinates (lat, lon) in km.
-	
-	3.5 ``sudo pip install numpy``
-	
-	3.6 ``sudo pip install scipy``
+	3.0 ``sudo pip install -r requirements.txt`` and go to 4 install the libraries in requirements.txt
+	one by one.
 	
 	Note: if you don't have root permission and can not run with sudo you can use pip with --user argument.
 
-4. ``pigeo`` is ready to use. Go to usage section.
+4. Set the Twitter keys and tokens in params.py. If you don't have your own Twitter credentials (keys and tokens) you can create one from http://apps.twitter.com. ``pigeo`` needs the Twitter credentials in order to geolocate Twitter users (e.g. @potus) otherwise it won't be able to download the user's tweets and won't be able to geolocate them. Text input though, will work without the Twitter credentials. 
+
+5. ``pigeo`` is ready to use. Go to usage section.
 
 
 Directory Structure
