@@ -33,11 +33,11 @@ Quick Start
 
 2. ``cd pigeo`` then ``chmod +x download_models.sh`` and then run ``./download_models.sh``.
 
-This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
+   This downloads the pre-trained models and extracts them in models. alternatively you can do it manually.
 
 3. Requirements:
 	
-	3.0 ``sudo pip install -r requirements.txt`` and go to 4 or start from 3.1 and install the individual packages one by one.asdfasdf
+	3.0 ``sudo pip install -r requirements.txt`` and go to 4 or start from 3.1 and install the individual packages one by one.
 
 	3.1 ``sudo pip install flask-restful`` or use ``pip install --user flask-restful`` if you are not a sudoer.
 	
