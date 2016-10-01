@@ -2,6 +2,13 @@
 ``pigeo`` readme
 ================
 
+New Features
+------------
+An accurate US model based on NA dataset is added to ``pigeo`` which can be loaded by --model ./models/lrna option.
+Run ./download_models.sh again or manually download the models tar file and extract it in the models directory. It will result in
+very accurate geolocation in US and for example can be used in US sentiment analysis toward presidential candidates.
+
+
 Introduction
 ------------
 
