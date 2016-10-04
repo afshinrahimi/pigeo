@@ -4,7 +4,7 @@
 
 New Features
 ------------
-An accurate US model based on NA dataset is added to ``pigeo`` which can be loaded by --model ./models/lrna option.
+An accurate US model based on NA dataset is added to ``pigeo`` which can be loaded by ``--model ./models/lrna`` option.
 Run ./download_models.sh again or manually download the models tar file and extract it in the models directory. It will result in
 very accurate geolocation in US and for example can be used in US sentiment analysis toward presidential candidates.
 
@@ -13,6 +13,7 @@ Introduction
 ------------
 
 ``pigeo`` is a document or Twitter user geolocation tool. Given a piece of text or a Twitter user, it can predict their locations based on pre-trained models.
+
 
 A screencast of how ``pigeo`` works is available on Youtube: https://www.youtube.com/watch?v=QiV_ow7k2J4 
 
@@ -231,6 +232,23 @@ Numpy version 1.10.4
 
 Note that the models might not be easily loadable by
 other pickle/scikit-learn versions.
+
+
+Citation
+--------
+
+@InProceedings{rahimi-cohn-baldwin:2016:P16-4,
+  author    = {Rahimi, Afshin  and  Cohn, Trevor  and  Baldwin, Timothy},
+  title     = {pigeo: A Python Geotagging Tool},
+  booktitle = {Proceedings of ACL-2016 System Demonstrations},
+  month     = {August},
+  year      = {2016},
+  address   = {Berlin, Germany},
+  publisher = {Association for Computational Linguistics},
+  pages     = {127--132},
+  url       = {http://anthology.aclweb.org/P16-4022}
+}
+
 
 Contact
 -------
