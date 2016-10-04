@@ -236,7 +236,7 @@ other pickle/scikit-learn versions.
 
 Citation
 --------
-
+```
 @InProceedings{rahimi-cohn-baldwin:2016:P16-4,
   author    = {Rahimi, Afshin  and  Cohn, Trevor  and  Baldwin, Timothy},
   title     = {pigeo: A Python Geotagging Tool},
@@ -248,7 +248,7 @@ Citation
   pages     = {127--132},
   url       = {http://anthology.aclweb.org/P16-4022}
 }
-
+```
 
 Contact
 -------
