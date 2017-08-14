@@ -18,6 +18,10 @@ Introduction
 
 A screencast of how ``pigeo`` works is available on Youtube: https://www.youtube.com/watch?v=QiV_ow7k2J4 
 
+[![How to use pigeo?](https://img.youtube.com/vi/QiV_ow7k2J4/0.jpg)](https://www.youtube.com/watch?v=QiV_ow7k2J4)
+
+
+
 The design principles are as follows:
 
 1. Lightweight and fast
