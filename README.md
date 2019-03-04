@@ -60,6 +60,25 @@ Quick Start
 
 5. ``pigeo`` is ready to use. Go to usage section.
 
+There might be conflicts between installed version, and the versions used in pigeo, so if the above didn't work, run the follwoing commands in order:
+
+
+``conda create -n pigeo python=2.7``
+
+``conda activate pigeo``
+
+``git clone http://github.com/afshinrahimi/pigeo.git``
+
+``cd pigeo``
+
+``chmod +x download_models.sh``
+
+``./download_models.sh``
+
+``pip install -r requirements.txt --ignore-installed``
+
+``python pigeo.py --mode shell``
+
 
 Directory Structure
 -------------------
