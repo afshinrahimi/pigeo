@@ -336,7 +336,7 @@ def train_model(texts, points, num_classses, model_dir, text_encoding='utf-8'):
 	clf.coef_ = csr_matrix(clf.coef_)
 	
 	logging.info('retrieving address of the given points using geopy (requires internet access).')
-	coordinate_address = retrieve_location_from_coordinates(points)
+	coordinate_address = retrieve_location_from_coordinates(label_coordinate.values())
 
 	logging.info('dumping the the vectorizer, clf (trained model), label_coordinates and coordinate_locations into pickle files in ' + model_dir)
 	dump_model(clf, vectorizer, coordinate_address, label_coordinate, model_dir)
