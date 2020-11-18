@@ -16,10 +16,6 @@ Introduction
 ``pigeo`` is a document or Twitter user geolocation tool. Given a piece of text or a Twitter user, it can predict their locations based on pre-trained models.
 
 
-A screencast of how ``pigeo`` works is available on Youtube: https://www.youtube.com/watch?v=QiV_ow7k2J4 
-
-[![How to use pigeo?](https://img.youtube.com/vi/QiV_ow7k2J4/0.jpg)](https://www.youtube.com/watch?v=QiV_ow7k2J4)
-
 
 
 The design principles are as follows:
