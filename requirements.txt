@@ -4,7 +4,7 @@ Flask==0.11.1
 Flask-RESTful==0.3.5
 haversine==0.4.5
 itsdangerous==0.24
-Jinja2==2.8
+Jinja2==2.11.3
 MarkupSafe==0.23
 numpy==1.11.1
 oauthlib==1.1.2
