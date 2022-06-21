@@ -6,7 +6,7 @@ haversine==0.4.5
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
-numpy==1.11.1
+numpy==1.22.0
 oauthlib==1.1.2
 python-dateutil==2.5.3
 pytz==2016.6.1
